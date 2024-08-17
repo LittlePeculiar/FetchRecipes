@@ -16,8 +16,9 @@ class ImageDownloader {
     
     private let cache = NSCache<NSString, NSData>()
     private let fileManager = LocalFileManager.shared
+    private let session = URLSession.shared
     
-    func fetchImage(urlPath: String) -> UIImage? {
+    func fetchImage(urlPath: String) async throws -> UIImage? {
         guard let imagePath = urlPath.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
             return nil
         }
@@ -35,17 +36,19 @@ class ImageDownloader {
                 guard let url = URL(string: imagePath) else {
                     return nil
                 }
-                // todo - make this asycn await
-                URLSession.shared.dataTask(with: url) { data, response, error in
-                    guard let imageData = data else { return }
-                    self.cache.setObject(imageData as NSData, forKey: cacheId)
-                    if let image = UIImage(data: imageData),
-                       let data = image.jpegData(compressionQuality: 1.0) {
-                        self.fileManager.save(data: data, urlPath: imagePath)
-                    }
+                
+                let result: NetworkResult = try await session.data(from: url, delegate: nil)
+                let imageData = result.data
+                
+                if let image = UIImage(data: imageData),
+                   let data = image.jpegData(compressionQuality: 1.0) {
+                    self.fileManager.save(data: data, urlPath: imagePath)
+                    self.cache.setObject(data as NSData, forKey: cacheId)
+                    return image
                 }
             }
         }
+        return nil
     }
     
 }

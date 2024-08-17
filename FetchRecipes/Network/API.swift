@@ -18,10 +18,10 @@ import Foundation
     Codable Model
  */
 
+typealias NetworkResult = (data: Data, response: URLResponse)
+
 class API {
     static let shared = API()
-    
-    typealias NetworkResult = (data: Data, response: URLResponse)
     
     private let session: URLSession
     private let decoder = JSONDecoder()
