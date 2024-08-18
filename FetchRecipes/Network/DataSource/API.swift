@@ -52,9 +52,9 @@ extension API {
         body: Encodable? = nil,
         method: Method = .GET
     ) async throws -> (Result<T?, APIError>) {
-        guard isReachable else {
-            return .failure(.noNetwork)
-        }
+//        guard isReachable else {
+//            return .failure(.noNetwork)
+//        }
         
         var requestBody: Data?
             if let body = body, let jsonData = body.getJsonData() {

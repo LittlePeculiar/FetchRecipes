@@ -27,6 +27,8 @@ class NetworkMonitor {
         }
     }
     
-    
+    func stopMonitoring() {
+        
+    }
     
 }

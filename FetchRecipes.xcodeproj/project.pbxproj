@@ -32,6 +32,14 @@
 		A081CE2B2C72906200EA0F57 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A081CE292C72906200EA0F57 /* Meal.swift */; };
 		A081CE2D2C7292A900EA0F57 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A081CE2C2C7292A900EA0F57 /* Recipe.swift */; };
 		A081CE2E2C7292A900EA0F57 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A081CE2C2C7292A900EA0F57 /* Recipe.swift */; };
+		A081CE302C72A0C800EA0F57 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A081CE2F2C72A0C800EA0F57 /* HomeView.swift */; };
+		A081CE312C72A0C800EA0F57 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A081CE2F2C72A0C800EA0F57 /* HomeView.swift */; };
+		A081CE332C72A0DB00EA0F57 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A081CE322C72A0DB00EA0F57 /* HomeViewModel.swift */; };
+		A081CE342C72A0DB00EA0F57 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A081CE322C72A0DB00EA0F57 /* HomeViewModel.swift */; };
+		A081CE372C72A90900EA0F57 /* MealCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A081CE362C72A90900EA0F57 /* MealCard.swift */; };
+		A081CE382C72A90900EA0F57 /* MealCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A081CE362C72A90900EA0F57 /* MealCard.swift */; };
+		A081CE3A2C72A92900EA0F57 /* MealCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A081CE392C72A92900EA0F57 /* MealCardViewModel.swift */; };
+		A081CE3B2C72A92900EA0F57 /* MealCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A081CE392C72A92900EA0F57 /* MealCardViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +79,10 @@
 		A081CE252C713CD500EA0F57 /* LocalFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFileManager.swift; sourceTree = "<group>"; };
 		A081CE292C72906200EA0F57 /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		A081CE2C2C7292A900EA0F57 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
+		A081CE2F2C72A0C800EA0F57 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		A081CE322C72A0DB00EA0F57 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		A081CE362C72A90900EA0F57 /* MealCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealCard.swift; sourceTree = "<group>"; };
+		A081CE392C72A92900EA0F57 /* MealCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealCardViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,10 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				A081CE282C72904F00EA0F57 /* Models */,
-				A081CE122C7132E600EA0F57 /* APIEndpoint.swift */,
-				A081CE152C71360E00EA0F57 /* APIError.swift */,
-				A081CE182C71381B00EA0F57 /* API.swift */,
-				A081CE1B2C7139EB00EA0F57 /* NetworkMonitor.swift */,
+				A081CE352C72A65C00EA0F57 /* DataSource */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -190,21 +199,25 @@
 			children = (
 				A081CE0F2C7127B200EA0F57 /* Home */,
 				A081CE102C7127BC00EA0F57 /* Details */,
-				A081CE0E2C71274200EA0F57 /* SharedComponents */,
+				A081CE0E2C71274200EA0F57 /* Common */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		A081CE0E2C71274200EA0F57 /* SharedComponents */ = {
+		A081CE0E2C71274200EA0F57 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				A081CE362C72A90900EA0F57 /* MealCard.swift */,
+				A081CE392C72A92900EA0F57 /* MealCardViewModel.swift */,
 			);
-			path = SharedComponents;
+			path = Common;
 			sourceTree = "<group>";
 		};
 		A081CE0F2C7127B200EA0F57 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				A081CE2F2C72A0C800EA0F57 /* HomeView.swift */,
+				A081CE322C72A0DB00EA0F57 /* HomeViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -233,6 +246,17 @@
 				A081CE2C2C7292A900EA0F57 /* Recipe.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		A081CE352C72A65C00EA0F57 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				A081CE122C7132E600EA0F57 /* APIEndpoint.swift */,
+				A081CE152C71360E00EA0F57 /* APIError.swift */,
+				A081CE182C71381B00EA0F57 /* API.swift */,
+				A081CE1B2C7139EB00EA0F57 /* NetworkMonitor.swift */,
+			);
+			path = DataSource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -367,13 +391,17 @@
 			files = (
 				A081CE2A2C72906200EA0F57 /* Meal.swift in Sources */,
 				A081CE202C713C1D00EA0F57 /* InAppNotification.swift in Sources */,
+				A081CE372C72A90900EA0F57 /* MealCard.swift in Sources */,
 				A081CDE32C7126A700EA0F57 /* ContentView.swift in Sources */,
 				A081CE262C713CD500EA0F57 /* LocalFileManager.swift in Sources */,
 				A081CE232C713C7300EA0F57 /* ImageDownloader.swift in Sources */,
 				A081CE1C2C7139EB00EA0F57 /* NetworkMonitor.swift in Sources */,
 				A081CE162C71360E00EA0F57 /* APIError.swift in Sources */,
 				A081CE132C7132E600EA0F57 /* APIEndpoint.swift in Sources */,
+				A081CE332C72A0DB00EA0F57 /* HomeViewModel.swift in Sources */,
+				A081CE3A2C72A92900EA0F57 /* MealCardViewModel.swift in Sources */,
 				A081CDE12C7126A700EA0F57 /* FetchRecipesApp.swift in Sources */,
+				A081CE302C72A0C800EA0F57 /* HomeView.swift in Sources */,
 				A081CE192C71381B00EA0F57 /* API.swift in Sources */,
 				A081CE2D2C7292A900EA0F57 /* Recipe.swift in Sources */,
 			);
@@ -383,12 +411,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A081CE382C72A90900EA0F57 /* MealCard.swift in Sources */,
 				A081CDF22C7126AC00EA0F57 /* FetchRecipesTests.swift in Sources */,
 				A081CE142C7132E600EA0F57 /* APIEndpoint.swift in Sources */,
+				A081CE3B2C72A92900EA0F57 /* MealCardViewModel.swift in Sources */,
 				A081CE242C713C7300EA0F57 /* ImageDownloader.swift in Sources */,
 				A081CE1D2C7139EB00EA0F57 /* NetworkMonitor.swift in Sources */,
 				A081CE2B2C72906200EA0F57 /* Meal.swift in Sources */,
+				A081CE312C72A0C800EA0F57 /* HomeView.swift in Sources */,
 				A081CE1A2C71381B00EA0F57 /* API.swift in Sources */,
+				A081CE342C72A0DB00EA0F57 /* HomeViewModel.swift in Sources */,
 				A081CE172C71360E00EA0F57 /* APIError.swift in Sources */,
 				A081CE212C713C1D00EA0F57 /* InAppNotification.swift in Sources */,
 				A081CE272C713CD500EA0F57 /* LocalFileManager.swift in Sources */,
