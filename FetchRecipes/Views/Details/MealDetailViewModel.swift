@@ -26,6 +26,7 @@ class MealDetailViewModel: ObservableObject {
     @Published var isLoading: Bool
     
     @Published var recipe: Recipe?
+    @Published var ingredients: [Ingredient] = []
     
     init(meal: Meal, isLoading: Bool = true) {
         self.meal = meal
@@ -34,6 +35,16 @@ class MealDetailViewModel: ObservableObject {
         Task {
             await fetchDetail(mealID: meal.mealID)
         }
+    }
+    
+    var instructions: [String] {
+        guard let string = self.recipe?.instructions else { return [] }
+        let lines = string.components(separatedBy: ".")
+        let instr = lines.map({
+            return $0.trimmingCharacters(in: .whitespacesAndNewlines)
+        })
+        
+        return instr
     }
     
     @MainActor private func fetchDetail(mealID: String) async {
@@ -48,10 +59,8 @@ class MealDetailViewModel: ObservableObject {
                 print("success: \(String(describing: detail?.meals.count)) records")
                 if let recipe = detail?.meals {
                     self.recipe = recipe.first
+                    self.ingredients = self.recipe?.ingredients ?? []
                     self.isLoading = false
-                    
-                    print(self.recipe?.instructions ?? "")
-                    print(self.recipe?.ingredients ?? "")
                 }
             }
             

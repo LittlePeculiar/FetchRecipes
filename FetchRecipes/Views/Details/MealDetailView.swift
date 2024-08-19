@@ -45,7 +45,11 @@ struct MealDetailView: View {
                         )
                         .padding(.horizontal, 10)
                         
-                        
+                        if selectedIndex == 0 {
+                            instructionView
+                        } else {
+                            ingredientsView
+                        }
                         
                         Spacer()
                     }
@@ -57,7 +61,40 @@ struct MealDetailView: View {
 }
 
 extension MealDetailView {
+    var instructionView: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            ForEach(Array(viewModel.instructions.enumerated()), id: \.offset) { (index, item) in
+                if !item.isEmpty {
+                    HStack(alignment: .top, spacing: 10) {
+                        Text("\(index+1).")
+                            .foregroundColor(.black)
+                            .font(.headline)
+                            .fontWeight(.semibold)
+                        
+                        Text("\(item).")
+                            .foregroundColor(.black)
+                            .font(.headline)
+                            .fontWeight(.semibold)
+                            .multilineTextAlignment(.leading)
+                        
+                        Spacer()
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(.horizontal, 20)
+                }
+            }
+        }
+    }
     
+    var ingredientsView: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            ForEach(viewModel.ingredients, id: \.self) { ingredient in
+                IngredientCard(ingredient: ingredient)
+            }
+        }
+        
+    }
+            
 }
 
 struct MealDetailView_Previews: PreviewProvider {
