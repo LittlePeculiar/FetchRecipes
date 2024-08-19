@@ -12,7 +12,7 @@ struct IngredientCard: View {
     
     var body: some View {
         ZStack(alignment: .center) {
-            HStack(alignment: .center, spacing: 30) {
+            HStack(alignment: .center, spacing: 20) {
                 Image(systemName: ingredient.isSelected ? "circle.fill" : "circle")
                 
                 HStack(alignment: .top, spacing: 10) {
@@ -50,7 +50,7 @@ struct IngredientCard: View {
 struct IngredientCard_Previews: PreviewProvider {
     static var ingredient = Ingredient(
         order: 1,
-        item: "MilkMilkMilkMilkMilkMilkMilk jjjjjjjkkkkkkkkkskskkskskskkskskskkskskkskskkskskkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk",
+        item: "Milk",
         measure: "200ml",
         isSelected: false
     )
