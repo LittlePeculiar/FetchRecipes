@@ -22,8 +22,14 @@ struct MealCard: View {
                         .cornerRadius(10)
                         
                     Text(viewModel.mealName)
+                        .foregroundColor(.black)
                         .font(.title)
                         .fontWeight(.bold)
+                        .multilineTextAlignment(.center)
+                        .frame(maxWidth: .infinity)
+                        .background {
+                            Color.white.opacity(0.7)
+                        }
                     
                 }
             }
@@ -31,7 +37,7 @@ struct MealCard: View {
         }
         .background {
             RoundedRectangle(cornerRadius: 10)
-                .foregroundColor(.white)
+                .foregroundColor(mealImage == nil ? .clear : .white)
                 .shadow(color: Color.black.opacity(0.3), radius: 10, x: 0, y: 10)
         }
         .task {

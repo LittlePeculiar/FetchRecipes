@@ -89,6 +89,7 @@ extension API {
         var headers: [String: String] = [:]
         headers["Content-Type"] = "application/json"
 
+        print("path: \(endpoint.path)")
         guard let url = URL(string: endpoint.path) else {
             throw APIError.badUrl
         }

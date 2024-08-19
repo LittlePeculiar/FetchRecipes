@@ -8,7 +8,7 @@
 import Foundation
 
 struct RecipeResponse: Codable {
-    let Recipe: [Recipe]
+    let meals: [Recipe]
 }
 
 struct Recipe: Codable, Hashable {
