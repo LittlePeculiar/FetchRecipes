@@ -31,8 +31,8 @@ struct HomeView: View {
                                 } label: {
                                     MealCard(
                                         viewModel: MealCardViewModel(
-                                            mealName: meal.meal,
-                                            imageURL: meal.mealThumb
+                                            mealName: meal.meal ?? "",
+                                            imageURL: meal.mealThumb ?? ""
                                         )
                                     )
                                 }

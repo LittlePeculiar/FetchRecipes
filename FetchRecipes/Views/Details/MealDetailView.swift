@@ -34,8 +34,8 @@ struct MealDetailView: View {
                         
                         MealCard(
                             viewModel: MealCardViewModel(
-                                mealName: viewModel.meal.meal,
-                                imageURL: viewModel.meal.mealThumb
+                                mealName: viewModel.meal.meal ?? "",
+                                imageURL: viewModel.meal.mealThumb ?? ""
                             )
                         )
                         
@@ -88,7 +88,8 @@ extension MealDetailView {
     
     var ingredientsView: some View {
         VStack(alignment: .leading, spacing: 0) {
-            ForEach(viewModel.ingredients, id: \.self) { ingredient in
+            ForEach(viewModel.ingredients.indices, id: \.self) { index in
+                let ingredient = self.$viewModel.ingredients[index]
                 IngredientCard(ingredient: ingredient)
             }
         }

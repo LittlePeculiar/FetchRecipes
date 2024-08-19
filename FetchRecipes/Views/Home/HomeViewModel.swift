@@ -33,7 +33,8 @@ class HomeViewModel: ObservableObject {
                 if let meals = meal?.meals {
                     // sort
                     self.meals = meals.sorted(by: {
-                        $0.meal < $1.meal
+                        guard let meal0 = $0.meal, let meal1 = $1.meal else { return false }
+                        return meal0 < meal1
                     })
                     self.isLoading = false
                 }

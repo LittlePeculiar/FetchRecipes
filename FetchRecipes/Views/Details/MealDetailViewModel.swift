@@ -33,14 +33,14 @@ class MealDetailViewModel: ObservableObject {
         self.isLoading = isLoading
         
         Task {
-            await fetchDetail(mealID: meal.mealID)
+            await fetchDetail(mealID: meal.mealID ?? "")
         }
     }
     
     var instructions: [String] {
         guard let string = self.recipe?.instructions else { return [] }
         let lines = string.components(separatedBy: ".")
-        let instr = lines.map({
+        let instr = lines.compactMap({
             return $0.trimmingCharacters(in: .whitespacesAndNewlines)
         })
         

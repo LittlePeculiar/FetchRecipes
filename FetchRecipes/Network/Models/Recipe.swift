@@ -12,7 +12,7 @@ struct RecipeResponse: Codable {
 }
 
 struct Recipe: Codable, Hashable {
-    var instructions: String
+    var instructions: String?
     var ingredients: [Ingredient] = []
     
     private enum CodingKeys: String, CodingKey {
@@ -21,7 +21,7 @@ struct Recipe: Codable, Hashable {
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        instructions = try container.decode(String.self, forKey: .instructions)
+        instructions = try container.decodeIfPresent(String.self, forKey: .instructions)
         
         // grab ingredients and measurements if not empty
         let dynamicContainer = try decoder.container(keyedBy: DynamicCodingKeys.self)

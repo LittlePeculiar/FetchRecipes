@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct IngredientCard: View {
-    @State var ingredient: Ingredient
+    @Binding var ingredient: Ingredient
     
     var body: some View {
         ZStack(alignment: .center) {
             HStack(alignment: .center, spacing: 30) {
                 Image(systemName: ingredient.isSelected ? "circle.fill" : "circle")
                 
-                HStack(alignment: .center, spacing: 10) {
+                HStack(alignment: .top, spacing: 10) {
                     Text(ingredient.measure)
                         .foregroundColor(.black)
                         .font(.headline)
@@ -30,7 +30,7 @@ struct IngredientCard: View {
                 
                 Spacer()
             }
-            .frame(height: 50)
+            .frame(minHeight: 50)
             .frame(maxWidth: .infinity)
             .padding(.horizontal, 20)
             
@@ -42,20 +42,22 @@ struct IngredientCard: View {
         }
         .padding()
         .onTapGesture {
-            ingredient.isSelected = !ingredient.isSelected
+            ingredient.isSelected.toggle()
         }
     }
 }
 
 struct IngredientCard_Previews: PreviewProvider {
+    static var ingredient = Ingredient(
+        order: 1,
+        item: "MilkMilkMilkMilkMilkMilkMilk jjjjjjjkkkkkkkkkskskkskskskkskskskkskskkskskkskskkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk",
+        measure: "200ml",
+        isSelected: false
+    )
+    
     static var previews: some View {
         IngredientCard(
-            ingredient: Ingredient(
-                order: 1,
-                item: "Milk",
-                measure: "200ml",
-                isSelected: false
-            )
+            ingredient: .constant(ingredient)
         )
     }
 }

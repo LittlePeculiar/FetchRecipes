@@ -12,9 +12,9 @@ struct MealResponse: Codable {
 }
 
 struct Meal: Codable, Hashable {
-    let mealID: String
-    let meal: String
-    let mealThumb: String
+    let mealID: String?
+    let meal: String?
+    let mealThumb: String?
     
     private enum CodingKeys: String, CodingKey {
         case mealID = "idMeal", meal = "strMeal", mealThumb = "strMealThumb"
