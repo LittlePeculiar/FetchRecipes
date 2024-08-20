@@ -20,8 +20,8 @@ import Foundation
 
 typealias NetworkResult = (data: Data, response: URLResponse)
 
-class API {
-    static let shared = API()
+
+class API: APIService {
     
     private let session: URLSession
     private let decoder = JSONDecoder()
@@ -40,6 +40,7 @@ class API {
             object: nil
         )
     }
+    
     @objc func connectivityChanged(notification _: NSNotification) {
             print("*** connectivity changed: \(NetworkMonitor.shared.isReachable)")
     }
@@ -49,12 +50,9 @@ extension API {
     func fetchData<T: Decodable>(
         payloadType: T.Type,
         from endpoint: APIEndpoint,
-        body: Encodable? = nil,
-        method: Method = .GET
+        body: Encodable?,
+        method: Method
     ) async throws -> (Result<T?, APIError>) {
-//        guard isReachable else {
-//            return .failure(.noNetwork)
-//        }
         
         var requestBody: Data?
             if let body = body, let jsonData = body.getJsonData() {

@@ -102,6 +102,7 @@ struct MealDetailView_Previews: PreviewProvider {
     static var previews: some View {
         MealDetailView(
             viewModel: MealDetailViewModel(
+                api: MockAPI(),
                 meal: Meal(
                     mealID: "52893",
                     meal: "Apple & Blackberry Crumble",

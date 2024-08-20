@@ -46,6 +46,12 @@
 		A081CE412C72C5F800EA0F57 /* MealDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A081CE3F2C72C5F800EA0F57 /* MealDetailViewModel.swift */; };
 		A081CE432C72E48E00EA0F57 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A081CE422C72E48E00EA0F57 /* CustomSegmentedControl.swift */; };
 		A081CE452C73021100EA0F57 /* IngredientCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A081CE442C73021100EA0F57 /* IngredientCard.swift */; };
+		A0AC83F02C7513FB0085B57E /* MockApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AC83EF2C7513FB0085B57E /* MockApi.swift */; };
+		A0AC83F22C7520060085B57E /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AC83F12C7520060085B57E /* HomeViewModelTests.swift */; };
+		A0AC83F32C75200F0085B57E /* MockApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AC83EF2C7513FB0085B57E /* MockApi.swift */; };
+		A0AC83F52C75216D0085B57E /* MealDetailViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AC83F42C75216D0085B57E /* MealDetailViewModelTest.swift */; };
+		A0AC83F72C7543BA0085B57E /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AC83F62C7543BA0085B57E /* APIService.swift */; };
+		A0AC83F82C7543BA0085B57E /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AC83F62C7543BA0085B57E /* APIService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +99,10 @@
 		A081CE3F2C72C5F800EA0F57 /* MealDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetailViewModel.swift; sourceTree = "<group>"; };
 		A081CE422C72E48E00EA0F57 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
 		A081CE442C73021100EA0F57 /* IngredientCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientCard.swift; sourceTree = "<group>"; };
+		A0AC83EF2C7513FB0085B57E /* MockApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockApi.swift; sourceTree = "<group>"; };
+		A0AC83F12C7520060085B57E /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
+		A0AC83F42C75216D0085B57E /* MealDetailViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetailViewModelTest.swift; sourceTree = "<group>"; };
+		A0AC83F62C7543BA0085B57E /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +175,8 @@
 			isa = PBXGroup;
 			children = (
 				A081CDF12C7126AC00EA0F57 /* FetchRecipesTests.swift */,
+				A0AC83F12C7520060085B57E /* HomeViewModelTests.swift */,
+				A0AC83F42C75216D0085B57E /* MealDetailViewModelTest.swift */,
 			);
 			path = FetchRecipesTests;
 			sourceTree = "<group>";
@@ -265,12 +277,22 @@
 		A081CE352C72A65C00EA0F57 /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
+				A0AC83EE2C7513DC0085B57E /* Mock */,
 				A081CE122C7132E600EA0F57 /* APIEndpoint.swift */,
 				A081CE152C71360E00EA0F57 /* APIError.swift */,
 				A081CE182C71381B00EA0F57 /* API.swift */,
+				A0AC83F62C7543BA0085B57E /* APIService.swift */,
 				A081CE1B2C7139EB00EA0F57 /* NetworkMonitor.swift */,
 			);
 			path = DataSource;
+			sourceTree = "<group>";
+		};
+		A0AC83EE2C7513DC0085B57E /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				A0AC83EF2C7513FB0085B57E /* MockApi.swift */,
+			);
+			path = Mock;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -404,6 +426,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A081CE2A2C72906200EA0F57 /* Meal.swift in Sources */,
+				A0AC83F72C7543BA0085B57E /* APIService.swift in Sources */,
 				A081CE202C713C1D00EA0F57 /* InAppNotification.swift in Sources */,
 				A081CE372C72A90900EA0F57 /* MealCard.swift in Sources */,
 				A081CDE32C7126A700EA0F57 /* ContentView.swift in Sources */,
@@ -419,6 +442,7 @@
 				A081CDE12C7126A700EA0F57 /* FetchRecipesApp.swift in Sources */,
 				A081CE3D2C72C5E300EA0F57 /* MealDetailView.swift in Sources */,
 				A081CE302C72A0C800EA0F57 /* HomeView.swift in Sources */,
+				A0AC83F02C7513FB0085B57E /* MockApi.swift in Sources */,
 				A081CE192C71381B00EA0F57 /* API.swift in Sources */,
 				A081CE2D2C7292A900EA0F57 /* Recipe.swift in Sources */,
 				A081CE402C72C5F800EA0F57 /* MealDetailViewModel.swift in Sources */,
@@ -431,12 +455,16 @@
 			files = (
 				A081CE382C72A90900EA0F57 /* MealCard.swift in Sources */,
 				A081CDF22C7126AC00EA0F57 /* FetchRecipesTests.swift in Sources */,
+				A0AC83F32C75200F0085B57E /* MockApi.swift in Sources */,
+				A0AC83F22C7520060085B57E /* HomeViewModelTests.swift in Sources */,
 				A081CE412C72C5F800EA0F57 /* MealDetailViewModel.swift in Sources */,
 				A081CE142C7132E600EA0F57 /* APIEndpoint.swift in Sources */,
+				A0AC83F82C7543BA0085B57E /* APIService.swift in Sources */,
 				A081CE3E2C72C5E300EA0F57 /* MealDetailView.swift in Sources */,
 				A081CE3B2C72A92900EA0F57 /* MealCardViewModel.swift in Sources */,
 				A081CE242C713C7300EA0F57 /* ImageDownloader.swift in Sources */,
 				A081CE1D2C7139EB00EA0F57 /* NetworkMonitor.swift in Sources */,
+				A0AC83F52C75216D0085B57E /* MealDetailViewModelTest.swift in Sources */,
 				A081CE2B2C72906200EA0F57 /* Meal.swift in Sources */,
 				A081CE312C72A0C800EA0F57 /* HomeView.swift in Sources */,
 				A081CE1A2C71381B00EA0F57 /* API.swift in Sources */,

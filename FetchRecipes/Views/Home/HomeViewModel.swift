@@ -9,10 +9,14 @@ import Foundation
 
 class HomeViewModel: ObservableObject {
     @Published var meals: [Meal] = []
+    @Published var displayMeals: [Meal] = []
     @Published var isLoading: Bool
     @Published var selectedMeal: Meal = Meal(mealID: "", meal: "", mealThumb: "")
     
-    init(isLoading: Bool = true) {
+    var api: APIService
+    
+    init(api: APIService, isLoading: Bool = true) {
+        self.api = api
         self.isLoading = isLoading
         
         Task {
@@ -20,9 +24,23 @@ class HomeViewModel: ObservableObject {
         }
     }
     
+    
+    // filter by meals for string entered in search bar
+    @MainActor func searchMeals(by searchText: String) async {
+        if !searchText.isEmpty {
+            displayMeals = meals.filter {
+                guard let meal = $0.meal else { return false }
+                return meal.contains(searchText)
+            }
+        } else {
+            displayMeals = meals
+        }
+    }
+    
+    // fetch meals from api - currently only searching for desserts
     @MainActor private func fetchMeals() async {
         do {
-            let results = try await API.shared.fetchData(payloadType: MealResponse.self, from: .desserts)
+            let results = try await api.fetchData(payloadType: MealResponse.self, from: .desserts)
             switch results {
             case .failure(let error):
                 print("failed to fetch data: \(error)")
@@ -36,6 +54,7 @@ class HomeViewModel: ObservableObject {
                         guard let meal0 = $0.meal, let meal1 = $1.meal else { return false }
                         return meal0 < meal1
                     })
+                    displayMeals = meals
                     self.isLoading = false
                 }
             }

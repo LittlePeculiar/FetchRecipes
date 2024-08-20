@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         HomeView(
-            viewModel: HomeViewModel()
+            viewModel: HomeViewModel(api: API())
         )
         .onAppear {
             NetworkMonitor.shared.startMonitoring()

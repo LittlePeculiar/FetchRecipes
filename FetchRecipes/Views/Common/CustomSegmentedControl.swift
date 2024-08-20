@@ -5,12 +5,20 @@
 //  Created by Gina Mullins on 8/18/24.
 //
 
+/*
+ *** Custom Segment Control ***
+ input:
+    selectedIndex: The index of the segment option - Binding variable
+    options: An array of options to be displayed
+    color: The color of the text and background - defaults to white
+ */
+
 import SwiftUI
 
 struct CustomSegmentedControl: View {
     @Binding var selectedIndex: Int
     var options: [String]
-    let color = Color.white
+    var color = Color.white
 
     var body: some View {
         HStack(spacing: 0) {

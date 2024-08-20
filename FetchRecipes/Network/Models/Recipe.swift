@@ -12,15 +12,27 @@ struct RecipeResponse: Codable {
 }
 
 struct Recipe: Codable, Hashable {
+    let mealID: String?
     var instructions: String?
     var ingredients: [Ingredient] = []
     
     private enum CodingKeys: String, CodingKey {
-        case instructions = "strInstructions"
+        case mealID = "idMeal", instructions = "strInstructions"
+    }
+    
+    init(
+        mealId: String = "",
+        instructions: String = "",
+        ingredients: [Ingredient] = []
+    ) {
+        self.mealID = mealId
+        self.instructions = instructions
+        self.ingredients = ingredients
     }
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
+        mealID = try container.decodeIfPresent(String.self, forKey: .mealID)
         instructions = try container.decodeIfPresent(String.self, forKey: .instructions)
         
         // grab ingredients and measurements if not empty

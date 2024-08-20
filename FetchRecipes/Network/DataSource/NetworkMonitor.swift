@@ -24,11 +24,14 @@ class NetworkMonitor {
         monitor.pathUpdateHandler = {[weak self] path in
             self?.status = path.status
             print("connected: \(path.status == .satisfied)")
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(InAppNotification.connectivityDidChange.notification)
+            }
         }
     }
     
     func stopMonitoring() {
-        
+        monitor.cancel()
     }
     
 }

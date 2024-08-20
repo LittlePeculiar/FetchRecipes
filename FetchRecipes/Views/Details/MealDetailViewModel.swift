@@ -28,7 +28,10 @@ class MealDetailViewModel: ObservableObject {
     @Published var recipe: Recipe?
     @Published var ingredients: [Ingredient] = []
     
-    init(meal: Meal, isLoading: Bool = true) {
+    private var api: APIService
+    
+    init(api: APIService, meal: Meal, isLoading: Bool = true) {
+        self.api = api
         self.meal = meal
         self.isLoading = isLoading
         
@@ -47,9 +50,10 @@ class MealDetailViewModel: ObservableObject {
         return instr
     }
     
+    // fetch details from api by mealID
     @MainActor private func fetchDetail(mealID: String) async {
         do {
-            let results = try await API.shared.fetchData(payloadType: RecipeResponse.self, from: .detailsBy(mealId: mealID))
+            let results = try await api.fetchData(payloadType: RecipeResponse.self, from: .detailsBy(mealId: mealID))
             switch results {
             case .failure(let error):
                 print("failed to fetch detail data: \(error)")
@@ -61,6 +65,11 @@ class MealDetailViewModel: ObservableObject {
                     self.recipe = recipe.first
                     self.ingredients = self.recipe?.ingredients ?? []
                     self.isLoading = false
+                    
+                    print("**********")
+                    print(recipe)
+                    print(ingredients)
+                    print("**********")
                 }
             }
             

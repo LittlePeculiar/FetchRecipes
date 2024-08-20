@@ -16,6 +16,7 @@ class MealCardViewModel: ObservableObject {
         self.imageURL = imageURL
     }
     
+    // fetch image, either from local or api
     @MainActor func fetchImage() async -> UIImage? {
         do {
             let image = try await ImageDownloader.shared.fetchImage(urlPath: self.imageURL)

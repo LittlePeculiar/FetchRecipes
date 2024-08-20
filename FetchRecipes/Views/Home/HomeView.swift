@@ -9,7 +9,8 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject var viewModel: HomeViewModel
-    @State var showDetail: Bool = false
+    @State private var showDetail: Bool = false
+    @State private var searchText = ""
     
     var body: some View {
         NavigationView {
@@ -24,7 +25,7 @@ struct HomeView: View {
                 } else {
                     ScrollView {
                         VStack {
-                            ForEach(viewModel.meals, id: \.self) { meal in
+                            ForEach(viewModel.displayMeals, id: \.self) { meal in
                                 Button {
                                     viewModel.selectedMeal = meal
                                     showDetail = true
@@ -41,6 +42,7 @@ struct HomeView: View {
                         .sheet(isPresented: $showDetail) {
                             MealDetailView(
                                 viewModel: MealDetailViewModel(
+                                    api: viewModel.api,
                                     meal: viewModel.selectedMeal
                                 )
                             )
@@ -58,13 +60,19 @@ struct HomeView: View {
                         }
                     }
         }
+        .searchable(text: $searchText)
+        .onChange(of: searchText) { searchText in
+            Task {
+                await viewModel.searchMeals(by: searchText)
+            }
+        }
     }
 }
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView(
-            viewModel: HomeViewModel()
+            viewModel: HomeViewModel(api: MockAPI())
         )
     }
 }
