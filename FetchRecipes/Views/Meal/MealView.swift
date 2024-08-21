@@ -16,8 +16,9 @@ struct MealView: View {
     
     var body: some View {
         ZStack {
-            Color(.blue).opacity(0.3)
-                .ignoresSafeArea()
+            Rectangle()
+                .foregroundColor(.blue.opacity(0.3))
+                .edgesIgnoringSafeArea(.all)
             
             if viewModel.isLoading {
                 ProgressView() {
