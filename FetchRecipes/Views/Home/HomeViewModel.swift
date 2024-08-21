@@ -30,7 +30,7 @@ class HomeViewModel: ObservableObject {
         if !searchText.isEmpty {
             displayMeals = meals.filter {
                 guard let meal = $0.meal else { return false }
-                return meal.contains(searchText)
+                return meal.lowercased().contains(searchText.lowercased())
             }
         } else {
             displayMeals = meals
@@ -38,7 +38,7 @@ class HomeViewModel: ObservableObject {
     }
     
     // fetch meals from api - currently only searching for desserts
-    @MainActor private func fetchMeals() async {
+    @MainActor func fetchMeals() async {
         do {
             let results = try await api.fetchData(payloadType: MealResponse.self, from: .desserts)
             switch results {

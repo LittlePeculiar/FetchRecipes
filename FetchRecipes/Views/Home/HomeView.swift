@@ -55,7 +55,7 @@ struct HomeView: View {
                     .toolbar {
                         ToolbarItem(placement: .principal) {
                             VStack {
-                                Text("Dessert").font(.title)
+                                Text("Desserts").font(.title)
                             }
                         }
                     }
