@@ -7,25 +7,6 @@
 
 import Foundation
 
-enum Category: CaseIterable {
-    // todo: additional categories here
-    case dessert
-    
-    var apiEndpoint: APIEndpoint {
-        switch self {
-        case .dessert:
-            return APIEndpoint.desserts
-        }
-    }
-    
-    var title: String {
-        switch self {
-        case .dessert:
-            return "Dessert"
-        }
-    }
-}
-
 protocol APIService {
     func fetchData<T: Decodable>(
         payloadType: T.Type,

@@ -38,6 +38,8 @@
 		A0AC83FB2C756F080085B57E /* MealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AC83FA2C756F080085B57E /* MealView.swift */; };
 		A0AC83FD2C756F180085B57E /* MealViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AC83FC2C756F180085B57E /* MealViewModel.swift */; };
 		A0AC83FF2C756FB40085B57E /* MealViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AC83FE2C756FB40085B57E /* MealViewModelTests.swift */; };
+		A0AC84032C7E82430085B57E /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AC84022C7E82430085B57E /* PrimaryButton.swift */; };
+		A0B2B1162CA2221C006B3776 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B2B1152CA2221C006B3776 /* Category.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +94,8 @@
 		A0AC83FA2C756F080085B57E /* MealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealView.swift; sourceTree = "<group>"; };
 		A0AC83FC2C756F180085B57E /* MealViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealViewModel.swift; sourceTree = "<group>"; };
 		A0AC83FE2C756FB40085B57E /* MealViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealViewModelTests.swift; sourceTree = "<group>"; };
+		A0AC84022C7E82430085B57E /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
+		A0B2B1152CA2221C006B3776 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,6 +228,7 @@
 				A081CE362C72A90900EA0F57 /* MealCard.swift */,
 				A081CE392C72A92900EA0F57 /* MealCardViewModel.swift */,
 				A081CE422C72E48E00EA0F57 /* CustomSegmentedControl.swift */,
+				A0AC84022C7E82430085B57E /* PrimaryButton.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -261,6 +266,7 @@
 			children = (
 				A081CE292C72906200EA0F57 /* Meal.swift */,
 				A081CE2C2C7292A900EA0F57 /* Recipe.swift */,
+				A0B2B1152CA2221C006B3776 /* Category.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -268,10 +274,10 @@
 		A081CE352C72A65C00EA0F57 /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
+				A0B2B1142CA221E9006B3776 /* Remote */,
 				A0AC83EE2C7513DC0085B57E /* Mock */,
 				A081CE122C7132E600EA0F57 /* APIEndpoint.swift */,
 				A081CE152C71360E00EA0F57 /* APIError.swift */,
-				A081CE182C71381B00EA0F57 /* API.swift */,
 				A0AC83F62C7543BA0085B57E /* APIService.swift */,
 				A081CE1B2C7139EB00EA0F57 /* NetworkMonitor.swift */,
 			);
@@ -293,6 +299,14 @@
 				A0AC83FC2C756F180085B57E /* MealViewModel.swift */,
 			);
 			path = Meal;
+			sourceTree = "<group>";
+		};
+		A0B2B1142CA221E9006B3776 /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				A081CE182C71381B00EA0F57 /* API.swift */,
+			);
+			path = Remote;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -431,6 +445,7 @@
 				A081CE372C72A90900EA0F57 /* MealCard.swift in Sources */,
 				A081CDE32C7126A700EA0F57 /* ContentView.swift in Sources */,
 				A081CE262C713CD500EA0F57 /* LocalFileManager.swift in Sources */,
+				A0AC84032C7E82430085B57E /* PrimaryButton.swift in Sources */,
 				A081CE432C72E48E00EA0F57 /* CustomSegmentedControl.swift in Sources */,
 				A0AC83FB2C756F080085B57E /* MealView.swift in Sources */,
 				A081CE232C713C7300EA0F57 /* ImageDownloader.swift in Sources */,
@@ -440,6 +455,7 @@
 				A081CE132C7132E600EA0F57 /* APIEndpoint.swift in Sources */,
 				A081CE332C72A0DB00EA0F57 /* HomeViewModel.swift in Sources */,
 				A081CE3A2C72A92900EA0F57 /* MealCardViewModel.swift in Sources */,
+				A0B2B1162CA2221C006B3776 /* Category.swift in Sources */,
 				A081CDE12C7126A700EA0F57 /* FetchRecipesApp.swift in Sources */,
 				A081CE3D2C72C5E300EA0F57 /* MealDetailView.swift in Sources */,
 				A0AC83FD2C756F180085B57E /* MealViewModel.swift in Sources */,
