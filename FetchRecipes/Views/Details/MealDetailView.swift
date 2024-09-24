@@ -64,7 +64,7 @@ struct MealDetailView: View {
 extension MealDetailView {
     var instructionView: some View {
         VStack(alignment: .leading, spacing: 10) {
-            ForEach(Array(viewModel.instructions.enumerated()), id: \.offset) { (index, item) in
+            ForEach(Array(viewModel.instructions.enumerated()), id: \.element) { (index, item) in
                 if !item.isEmpty {
                     HStack(alignment: .top, spacing: 10) {
                         Text("\(index+1).")
