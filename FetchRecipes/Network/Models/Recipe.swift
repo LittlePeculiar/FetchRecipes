@@ -69,7 +69,8 @@ struct Recipe: Codable, Hashable {
         }
     }
 }
-    
+
+// make Hashable to compare
 struct Ingredient: Codable, Hashable {
     let order: Int
     let item: String

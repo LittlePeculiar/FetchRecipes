@@ -48,3 +48,15 @@ struct CustomSegmentedControl: View {
         .cornerRadius(20)
     }
 }
+
+struct CustomSegmentedControl_Previews: PreviewProvider {
+    @State static var index = 0
+    
+    static var previews: some View {
+        CustomSegmentedControl(
+            selectedIndex: $index,
+            options: ["one", "two"],
+            color: Color.blue
+        )
+    }
+}
