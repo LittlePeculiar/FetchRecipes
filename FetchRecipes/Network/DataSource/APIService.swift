@@ -5,7 +5,7 @@
 //  Created by Gina Mullins on 8/20/24.
 //
 
-import Foundation
+import UIKit
 
 protocol APIService {
     func fetchData<T: Decodable>(
@@ -14,6 +14,8 @@ protocol APIService {
         body: Encodable?,
         method: Method
     ) async throws -> (Result<T?, APIError>)
+    
+    func fetchImage(urlPath: String) async throws -> UIImage?
 }
 
 // satisfy protocol for default params

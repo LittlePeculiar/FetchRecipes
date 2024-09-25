@@ -10,6 +10,7 @@ import SwiftUI
 class MockAPI: APIService {
     
     private let decoder = JSONDecoder()
+    private let cache = NSCache<NSString, NSData>()
     
     func fetchData<T: Decodable>(
         payloadType: T.Type,
@@ -41,8 +42,37 @@ class MockAPI: APIService {
             print(error.localizedDescription)
             return .failure(.unknown)
         }
+    }
+    
+    func fetchImage(urlPath: String) async throws -> UIImage? {
+        guard let imagePath = urlPath.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
+            return nil
+        }
+        let cacheId = NSString(string: imagePath)
         
-        
+        // first check cache
+        if let imageData = try await fetchDataBy(cacheId: cacheId) {
+            return UIImage(data: imageData)
+        } else {
+            return try await fetchImageBy(cacheId: cacheId)
+        }
+    }
+    
+    func fetchDataBy(cacheId: NSString) async throws -> Data? {
+        return cache.object(forKey: cacheId) as Data?
+    }
+    
+    func fetchImageBy(cacheId: NSString) async throws -> UIImage? {
+        if let image = UIImage(named: "pancakes"),
+           let data = image.jpegData(compressionQuality: 1.0) {
+            self.cache.setObject(data as NSData, forKey: cacheId)
+            return image
+        }
+        return nil
+    }
+    
+    func clearCache() {
+        cache.removeAllObjects()
     }
 }
 

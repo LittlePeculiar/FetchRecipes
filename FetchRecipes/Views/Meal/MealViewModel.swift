@@ -11,15 +11,14 @@ class MealViewModel: ObservableObject {
     @Published var category: Category
     @Published var meals: [Meal] = []
     @Published var displayMeals: [Meal] = []
-    @Published var isLoading: Bool
+    @Published var isLoading: Bool = true
     @Published var selectedMeal: Meal = Meal(mealID: "", meal: "", mealThumb: "")
     
     var api: APIService
     
-    init(api: APIService, category: Category, isLoading: Bool = true) {
+    init(api: APIService, category: Category) {
         self.api = api
         self.category = category
-        self.isLoading = isLoading
         
         Task {
             await fetchMeals()

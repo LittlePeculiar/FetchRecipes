@@ -23,17 +23,16 @@ enum detailOption {
 
 class MealDetailViewModel: ObservableObject {
     @Published var meal: Meal
-    @Published var isLoading: Bool
+    @Published var isLoading: Bool = true
     
     @Published var recipe: Recipe?
     @Published var ingredients: [Ingredient] = []
     
-    private var api: APIService
+    var api: APIService
     
-    init(api: APIService, meal: Meal, isLoading: Bool = true) {
+    init(api: APIService, meal: Meal) {
         self.api = api
         self.meal = meal
-        self.isLoading = isLoading
         
         Task {
             await fetchDetail(mealID: meal.mealID ?? "")

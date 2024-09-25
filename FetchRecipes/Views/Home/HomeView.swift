@@ -22,7 +22,7 @@ struct HomeView: View {
                                     NavigationLink {
                                         MealView(
                                             viewModel: MealViewModel(
-                                                api: API(),
+                                                api: viewModel.api,
                                                 category: category
                                             )
                                         )

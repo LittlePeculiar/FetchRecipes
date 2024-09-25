@@ -35,6 +35,7 @@ struct MealDetailView: View {
                         
                         MealCard(
                             viewModel: MealCardViewModel(
+                                api: viewModel.api,
                                 mealName: viewModel.meal.meal ?? "",
                                 imageURL: viewModel.meal.mealThumb ?? ""
                             )
@@ -108,8 +109,7 @@ struct MealDetailView_Previews: PreviewProvider {
                     mealID: "52893",
                     meal: "Apple & Blackberry Crumble",
                     mealThumb: "https://www.themealdb.com/images/media/meals/xvsurr1511719182.jpg"
-                ),
-                isLoading: false
+                )
             )
         )
     }

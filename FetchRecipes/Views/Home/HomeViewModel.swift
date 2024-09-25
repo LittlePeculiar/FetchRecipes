@@ -9,15 +9,12 @@ import Foundation
 
 class HomeViewModel: ObservableObject {
     @Published var categories: [Category] = []
-    @Published var isLoading: Bool
     
     var api: APIService
     
-    init(api: APIService, isLoading: Bool = true) {
+    init(api: APIService) {
         self.api = api
-        self.isLoading = isLoading
         
         categories = Category.allCases
-        
     }
 }

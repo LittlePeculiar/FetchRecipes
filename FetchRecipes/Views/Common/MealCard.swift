@@ -51,6 +51,7 @@ struct MealCard_Previews: PreviewProvider {
     static var previews: some View {
         MealCard(
             viewModel: MealCardViewModel(
+                api: MockAPI(),
                 mealName: "Treacle Tart",
                 imageURL: "https://www.themealdb.com/images/media/meals/wprvrw1511641295.jpg"
             )
